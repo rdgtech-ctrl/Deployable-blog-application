@@ -70,7 +70,7 @@ const Profile = () => {
         }
         try {
             dispatch(setLoading(true))
-            const res = await axios.put(`https://blogging-application-ox2h.onrender.com/user/profile/update`, formData, {
+            const res = await axios.put(`https://blogging-application-ox2h.onrender.com/api/v1/user/profile/update`, formData, {
                 headers: {
                     "Content-Type": "miltipart/form-data"
                 },

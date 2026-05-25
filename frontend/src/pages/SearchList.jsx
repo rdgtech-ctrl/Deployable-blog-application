@@ -15,7 +15,7 @@ const SearchList = () => {
     useEffect(() => {
         const fetchBlogs = async () => {
             try {
-                const res = await axios.get('https://blogging-application-ox2h.onrender.com/blog/all')
+                const res = await axios.get('https://blogging-application-ox2h.onrender.com/api/v1/blog/all')
                 if (res.data.success) {
                     dispatch(setBlog(res.data.blogs))
                 }

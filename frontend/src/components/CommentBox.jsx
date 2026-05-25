@@ -34,7 +34,7 @@ const CommentBox = ({ selectedBlog }) => {
 
     const likeCommentHandler = async (commentId) => {
         try {
-            const res = await axios.get(`https://blogging-application-ox2h.onrender.com/comment/${commentId}/like`, {
+            const res = await axios.get(`https://blogging-application-ox2h.onrender.com/api/v1/comment/${commentId}/like`, {
                 withCredentials: true
             });
             if (res.data.success) {
@@ -59,7 +59,7 @@ const CommentBox = ({ selectedBlog }) => {
         }
         try {
             const res = await axios.post(
-                `https://blogging-application-ox2h.onrender.com/comment/${selectedBlog._id}/create`,
+                `https://blogging-application-ox2h.onrender.com/api/v1/comment/${selectedBlog._id}/create`,
                 { content: content.trim() },
                 {
                     headers: { "Content-Type": "application/json" },
@@ -89,7 +89,7 @@ const CommentBox = ({ selectedBlog }) => {
     const deleteComment = async (commentId) => {
         try {
             const res = await axios.delete(
-                `https://blogging-application-ox2h.onrender.com/comment/${commentId}/delete`,
+                `https://blogging-application-ox2h.onrender.com/api/v1/comment/${commentId}/delete`,
                 { withCredentials: true }
             )
             if (res.data.success) {
@@ -120,7 +120,7 @@ const CommentBox = ({ selectedBlog }) => {
         }
         try {
             const res = await axios.put(
-                `https://blogging-application-ox2h.onrender.com/comment/${commentId}/edit`,
+                `https://blogging-application-ox2h.onrender.com/api/v1/comment/${commentId}/edit`,
                 { content: editedContent.trim() },
                 {
                     headers: { "Content-Type": "application/json" },
@@ -146,7 +146,7 @@ const CommentBox = ({ selectedBlog }) => {
         const getAllcommentsOfBlog = async () => {
             try {
                 const res = await axios.get(
-                    `https://blogging-application-ox2h.onrender.com/comment/${selectedBlog._id}/comment/all`,
+                    `https://blogging-application-ox2h.onrender.com/api/v1/comment/${selectedBlog._id}/comment/all`,
                     { withCredentials: true }
                 )
                 dispatch(setComment(res.data.comments))

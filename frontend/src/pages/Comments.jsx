@@ -18,7 +18,7 @@ const Comments = () => {
   const [allComments, setAllComments] = useState([])
   const getTotalComments = async () => {
     try {
-      const res = await axios.get(`https://blogging-application-ox2h.onrender.com/comment/my-blogs/comments`, { withCredentials: true })
+      const res = await axios.get(`https://blogging-application-ox2h.onrender.com/api/v1/comment/my-blogs/comments`, { withCredentials: true })
       if (res.data.success) {
         setAllComments(res.data.comments)
       }

@@ -8,11 +8,11 @@ const commentSchema = new mongoose.Schema(
             required: true,
         },
         postId: {
-            type: mongoose.Schema.Types.ObjectId,  //  capital O
+            type: mongoose.Schema.Types.ObjectId,  // capital O
             ref: "Blog"
         },
         userId: {
-            type: mongoose.Schema.Types.ObjectId,  // ✅ capital O
+            type: mongoose.Schema.Types.ObjectId,  // capital O
             ref: 'User'
         },
         likes: {

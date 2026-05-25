@@ -7,8 +7,10 @@ import { setBlog } from '@/redux/blogSlice'
 import { Badge } from "@/components/ui/badge"
 import { Input } from './ui/input'
 import { Button } from './ui/button'
+import { useNavigate } from 'react-router-dom'
 const RecentBlog = () => {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const { blog } = useSelector(store => store.blog)
     useEffect(() => {
         const getAllPublishedBlogs = async () => {
@@ -44,7 +46,7 @@ const RecentBlog = () => {
                     <div className='my-5 flex flex-wrap gap-3'>
                         {
                             ["Blogging", "Web Development", "Digital Marketing", "Cooking", "Photography", "Sports", "Comics"].map((item, index) => {
-                                return <Badge className="cursor-pointer" key={index}>{item}</Badge>
+                                return <Badge onClick={() => navigate(`/search?q=${item}`)} className="cursor-pointer" key={index}>{item}</Badge>
                             })
                         }
                     </div>

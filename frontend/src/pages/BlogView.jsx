@@ -4,6 +4,7 @@ import { useParams, Link } from 'react-router-dom'
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
 import { Bookmark, Loader2, MessageSquare, Share2 } from 'lucide-react'
 import { setBlog } from '@/redux/blogSlice'
+import CommentBox from '@/components/CommentBox'
 import axios from 'axios'
 import {
     Breadcrumb,
@@ -21,7 +22,7 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { FaRegHeart, FaHeart } from 'react-icons/fa' // ✅ FaHeart added
+import { FaRegHeart, FaHeart } from 'react-icons/fa'
 import { toast } from 'sonner'
 
 const BlogView = () => {
@@ -32,7 +33,7 @@ const BlogView = () => {
     const { user } = useSelector(store => store.auth)
     const selectedBlog = blog?.find(b => b._id === blogId)
 
-    // ✅ Safe useState with optional chaining — won't crash if selectedBlog is undefined
+    
     const [blogLike, setBlogLike] = useState(selectedBlog?.likes?.length || 0)
     const [liked, setLiked] = useState(selectedBlog?.likes?.includes(user?._id) || false)
 
@@ -96,7 +97,10 @@ const BlogView = () => {
             toast.error(error.response.data.message)
         }
     }
-
+    useEffect(()=>{
+        window.scrollTo(0,0)
+    },[])
+    // [] means run once only when the component first mounts (appears on screen)
     return (
         <div className="pt-14">
             <div className='max-w-6xl mx-auto p-10'>
@@ -167,6 +171,7 @@ const BlogView = () => {
                         </Button>
                     </div>
                 </div>
+            <CommentBox selectedBlog={selectedBlog}/>
             </div>
         </div>
     )

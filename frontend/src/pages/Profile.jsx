@@ -7,6 +7,7 @@ import { Link, useSearchParams } from 'react-router-dom'
 import { FaFacebook, FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa'
 import {setLoading,setUser} from "../redux/authSlice.js"
 import { Label } from '@/components/ui/label'
+import TotalProperty from '@/components/TotalProperty'
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from '@/components/ui/button'
 import { Loader2 } from 'lucide-react'
@@ -259,6 +260,7 @@ const Profile = () => {
                     </div>
                 </Card>
             </div>
+            <TotalProperty/>
         </div>
     )
 }

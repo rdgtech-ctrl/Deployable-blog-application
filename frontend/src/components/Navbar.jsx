@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Logo from "../assets/logo.png"
 import userLogo from "../assets/user.jpg"
 import { Input } from './ui/input'
+import ResponsiveMenu from './ResponsiveMenu'  // ← added the 's'
 import { Button } from './ui/button'
 import {
     ChartColumnBig,
@@ -28,12 +29,27 @@ import {
     DropdownMenuShortcut,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { HiMenuAlt1, HiMenuAlt3 } from "react-icons/hi"
 
 const Navbar = () => {
     const { user } = useSelector(store => store.auth)
     const { theme } = useSelector(store => store.theme)
+    const [searchTerm, setSearchTerm] = useState("")
+    const [openNav, setOpenNav] = useState(false)
     const dispatch = useDispatch()
     const navigate = useNavigate()
+
+    const toggleNav=() => {
+        setOpenNav(!openNav)
+    }
+
+    const handleSearch = (e) => {
+        e.preventDefault()
+        if (searchTerm.trim() !== "") {
+            navigate(`/search?q=${encodeURIComponent(searchTerm)}`)
+            setSearchTerm("")
+        }
+    }
 
     const logoutHandler = async (e) => {
         try {
@@ -70,9 +86,11 @@ const Navbar = () => {
                         <Input
                             type="text"
                             placeholder="Search..."
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
                             className="border border-gray-700 dark:bg-gray-900 bg-gray-300 w-[300px] hidden md:block"
                         />
-                        <Button className="absolute right-0 top-0"><Search /></Button>
+                        <Button onClick={handleSearch} className="absolute right-0 top-0"><Search /></Button>
                     </div>
                 </div>
                 {/* nav section */}
@@ -129,7 +147,7 @@ const Navbar = () => {
                                             </DropdownMenuItem>
                                         </DropdownMenuContent>
                                     </DropdownMenu>
-                                    <Button onClick={logoutHandler}>LogOut</Button>
+                                    <Button className="hidden md:block" onClick={logoutHandler}>LogOut</Button>
                                 </div>
                             ) : (
                                 <div className='ml-7 md:flex gap-2'>
@@ -139,7 +157,11 @@ const Navbar = () => {
                             )
                         }
                     </div>
+                    {
+                        openNav ? <HiMenuAlt3 onClick={toggleNav} className='w-7 h-7 md:hidden' /> : <HiMenuAlt1 className='w-7 h-7 md:hidden' onClick={toggleNav} />
+                    }
                 </nav>
+                <ResponsiveMenu openNav={openNav} setOpenNav={setOpenNav} logoutHandler={logoutHandler} />
             </div>
         </div>
     )

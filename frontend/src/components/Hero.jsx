@@ -10,15 +10,15 @@ const Hero = () => {
                 {/* text section */}
                 <div className='max-w-2xl'>
                     <h1 className='text-4xl md:text-6xl font-bold mb-4'>Explore the Latest Tech & Web Trends</h1>
-                    <p  className='text-lg md:text-xl opacity-80 mb-6'>Stay ahead with in-depth articles,tutorials and insights on web developement, digital marketing, and tech innovations.</p>
+                    <p className='text-lg md:text-xl opacity-80 mb-6'>Stay ahead with in-depth articles,tutorials and insights on web developement, digital marketing, and tech innovations.</p>
                     <div className='flex space-x-4'>
-                        <Link><Button className="text-lg">Get Started</Button></Link>
-                        <Link><Button variant="outline" className="border-white px-6 py-3 text-lg">Learn More</Button></Link>
+                        <Link to={'/dashboard/write-blog'}><Button className="text-lg">Get Started</Button></Link>
+                        <Link to={'/about'}><Button variant="outline" className="border-white px-6 py-3 text-lg">Learn More</Button></Link>
                     </div>
                 </div>
                 {/* image section */}
                 <div className='flex items-center justify-center'>
-                    <img src={heroImg} alt="" className='md:h-[550px] md:w-[550px]'/>
+                    <img src={heroImg} alt="" className='md:h-[550px] md:w-[550px]' />
                 </div>
             </div>
         </div>

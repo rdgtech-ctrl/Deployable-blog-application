@@ -10,6 +10,7 @@ import Dashboard from './pages/Dashboard'
 import Profile from './pages/Profile'
 import CreateBlog from './pages/CreateBlog'
 import Comments from './pages/Comments'
+import SearchList from './pages/SearchList'
 import UpdateBlog from './pages/UpdateBlog'
 import YourBlog from './pages/YourBlog'
 import BlogView from './pages/BlogView'
@@ -19,7 +20,7 @@ import Footer from './components/Footer'
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <><Navbar /><Home /><Footer/></>
+    element: <><Navbar /><Home /><Footer /></>
   },
   {
     path: "/blogs",
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
       <>
         <Navbar />
         <Blogs />
-        <Footer/>
+        <Footer />
       </>
   },
   {
@@ -36,7 +37,16 @@ const router = createBrowserRouter([
       <>
         <Navbar />
         <About />
-        <Footer/>
+        <Footer />
+      </>
+  },
+  {
+    path: "/search",
+    element:
+      <>
+        <Navbar />
+        <SearchList />
+        <Footer />
       </>
   },
   {

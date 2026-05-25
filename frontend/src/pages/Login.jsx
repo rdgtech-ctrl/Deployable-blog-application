@@ -33,7 +33,7 @@ const Login = () => {
     e.preventDefault()
     try {
       dispatch(setLoading(true))  // ✅ Fix 2: wrapped in dispatch
-      const res = await axios.post(`http://localhost:8000/api/v1/user/login`, input, {
+      const res = await axios.post(`https://blogging-application-ox2h.onrender.com/user/login`, input, {
         headers: {
           "Content-Type": "application/json"
         },

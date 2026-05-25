@@ -35,7 +35,7 @@ const CreateBlog = () => {
   const createBlogHandler = async () => {
     try {
       dispatch(setLoading(true)) // from redux . slice
-      const res = await axios.post(`http://localhost:8000/api/v1/blog/`, { title, category }, {
+      const res = await axios.post(`https://blogging-application-ox2h.onrender.com/blog/`, { title, category }, {
         headers: {
           "Content-Type": "application/json"
         },
